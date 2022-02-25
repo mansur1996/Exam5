@@ -8,28 +8,28 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.exam5.R
-import com.example.exam5.model.Category
+import com.example.exam5.model.Collection
 
-class CategoryAdapter(var context : Context, var items : ArrayList<Category>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CollectonAdapter(var context: Context, var items: ArrayList<Collection>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return CategoryViewHolder(LayoutInflater.from(context).inflate(R.layout.item_home_category, parent, false))
+        return ItemViewHolder(LayoutInflater.from(context).inflate(R.layout.item_home_collection, parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item  = items[position]
 
-        if(holder is CategoryViewHolder){
+        if(holder is ItemViewHolder){
             holder.apply {
-                photo.setImageResource(item.photo)
-                category.text = item.category
+                photo.setImageResource(item.photoC)
+                name.text = item.collection
             }
         }
     }
 
     override fun getItemCount(): Int = items.size
 
-    class CategoryViewHolder(view : View) : RecyclerView.ViewHolder(view){
-        var photo = view.findViewById<ImageView>(R.id.iv_photoCate)
-        var category = view.findViewById<TextView>(R.id.tv_category)
+    class ItemViewHolder(view : View) : RecyclerView.ViewHolder(view){
+        var photo = view.findViewById<ImageView>(R.id.iv_photo_cal)
+        var name = view.findViewById<TextView>(R.id.tv_collection)
     }
 }
